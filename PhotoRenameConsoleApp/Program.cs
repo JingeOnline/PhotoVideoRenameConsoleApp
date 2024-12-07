@@ -20,7 +20,11 @@ namespace PhotoRenameConsoleApp
             int imageChanged = 0;
             int imageUnChanged = 0;
             IEnumerable<FileInfo> images = directoryInfo.GetFiles("*", SearchOption.TopDirectoryOnly)
-                .Where(x => x.Extension.ToLower() == ".jpg" || x.Extension.ToLower() == ".jpeg" || x.Extension.ToLower()==".heic");
+                .Where(x => x.Extension.ToLower() == ".jpg" || 
+                            x.Extension.ToLower() == ".jpeg" || 
+                            x.Extension.ToLower()==".heic" || 
+                            x.Extension.ToLower()==".cr2"
+                );
             if (images != null)
             {
                 foreach (FileInfo image in images)
@@ -74,7 +78,8 @@ namespace PhotoRenameConsoleApp
             Console.WriteLine("未重命名照片：" + imageUnChanged);
             Console.WriteLine("已重命名视频：" + videoChanged);
             Console.WriteLine("未重命名视频：" + videoUnChanged);
-
+            Console.WriteLine();
+            Console.WriteLine("...按任意键退出程序");
             Console.ReadKey();
 
         }
